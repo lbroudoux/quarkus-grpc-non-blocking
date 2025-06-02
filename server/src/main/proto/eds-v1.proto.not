@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package org.acme.example.discovery.v1;
+
+option java_package = "org.acme.example.discovery.v1";
+option java_multiple_files = true;
+option java_outer_classname = "ExpositionDiscoveryProto";
+
+message Exposition {
+  string id = 1;
+  string name = 2;
+}
+
+message ExpositionDiscoveryRequest {
+  string gatewayId = 1;
+  map<string, string> labels = 2;
+}
+
+message ExpositionDiscoveryResponse {
+  repeated Exposition expositions = 1;
+}
+
+
+service ExpositionDiscoveryService {
+  rpc FetchExpositions(ExpositionDiscoveryRequest)
+      returns (ExpositionDiscoveryResponse) {
+  }
+}
