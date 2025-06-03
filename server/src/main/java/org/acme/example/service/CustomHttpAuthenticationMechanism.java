@@ -44,6 +44,10 @@ public class CustomHttpAuthenticationMechanism implements HttpAuthenticationMech
    public Uni<SecurityIdentity> authenticate(RoutingContext context, IdentityProviderManager identityProviderManager) {
       logger.infof("CustomHttpAuthenticationMechanism.authenticate() called with context: %s", context);
 
+//      logger.infof("Context request headers are %s", context.request().headers());
+//      context.request().body().onSuccess(h -> logger.infof("Context body onSuccess: %s", h.toString()))
+//            .onFailure(t -> logger.error("Failed to read context body", t));
+
       if (context.request().getHeader("Authorization") != null) {
          String token = context.request().getHeader("Authorization").substring("Bearer ".length());
          logger.infof("CustomHttpAuthenticationMechanism.authenticate() called with token: %s", token);

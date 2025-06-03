@@ -74,6 +74,19 @@ public class ApiTokenIdentityProvider implements IdentityProvider<TokenAuthentic
       });
       return Uni.createFrom().completionStage(future::toCompletionStage);
 
+//      ApiToken apiToken = tokenRepository.findByToken(request.getToken().getToken());
+//      if (apiToken != null && apiToken.isValid()) {
+//         logger.infof("ApiTokenIdentityProvider.authenticate(): Found valid API token: %s", apiToken.token);
+//
+//         return Uni.createFrom().item(QuarkusSecurityIdentity.builder()
+//               .setPrincipal(new QuarkusPrincipal(apiToken.user.username))
+//               .addCredential(request.getToken())
+//               .build());
+//      }
+//      // Authentication failed
+//      logger.warnf("ApiTokenIdentityProvider.authenticate(): Invalid or expired API token: %s", request.getToken().getToken());
+//      return null;
+
 //      return context.runBlocking(() -> {
 //         logger.infof("Running blocking authentication for token: %s", request.getToken().getToken());
 //         ApiToken apiToken = tokenRepository.findByToken(request.getToken().getToken());
